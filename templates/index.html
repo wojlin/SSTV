@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSTV</title>
+</head>
+<body>
+    <div id="file_decoder_container">
+        <div>
+            <form id="file_decoder_form" method="POST" action="/convert" onsubmit="display();" enctype="multipart/form-data">
+              <input type="file" id="file" name="file" accept=".wav">
+              <p><input type="submit" value="Submit"></p>
+            </form>
+        </div>
+        <div id="file_decoder_cast"><img src=""></div>
+        <script>
+            document.forms['file_decoder_form'].addEventListener('submit', (event) => {
+                event.preventDefault();
+                fetch(event.target.action, {
+                    method: 'POST',
+                    body: new URLSearchParams(new FormData(event.target))
+                }).then((resp) => {
+                    return resp;
+                }).then((body) => {
+                    // TODO handle body
+                }).catch((error) => {
+                    // TODO handle error
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
